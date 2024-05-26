@@ -13,7 +13,7 @@ const Timer = () => {
 
     const interval = setInterval(() => {
       if (startTime && Date.now() - startTime < 60000) {
-        setStartTime(startTime); // Keep the state update to trigger re-render
+        setStartTime(startTime);
       } else {
         clearInterval(interval);
       }
@@ -24,16 +24,38 @@ const Timer = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    let animationFrameId;
+    let animationFrameId: number;
 
     if (canvas) {
       canvas.width = 300;
       canvas.height = 300;
       const ctx = canvas.getContext('2d');
 
-      const drawWedge = (w, fill, stroke, strokewidth) => {
+      const drawWedge = (
+        w: {
+          cx: number;
+          cy: number;
+          radius: number;
+          startAngle: number;
+          endAngle: number;
+        },
+        fill: string,
+        stroke: string,
+        strokewidth: number,
+      ) => {
         const {cx, cy, radius, startAngle, endAngle} = w;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // 바깥 흰 영역
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius + 45, 0, 2 * Math.PI);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 1; // 가장 바깥 테두리
+        ctx.stroke();
+
+        // 색상 타이머 영역
         ctx.beginPath();
         ctx.moveTo(cx, cy);
         ctx.arc(cx, cy, radius, startAngle, endAngle, true);
@@ -44,9 +66,11 @@ const Timer = () => {
         ctx.lineWidth = strokewidth;
         ctx.stroke();
 
+        // 안쪽 영역
         ctx.beginPath();
-        ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
-        ctx.stroke();
+        ctx.arc(cx, cy, radius / 3, 0, 2 * Math.PI);
+        ctx.fillStyle = 'white';
+        ctx.fill();
       };
 
       const animate = () => {
@@ -61,7 +85,7 @@ const Timer = () => {
           endAngle: -Math.PI / 2 + angle,
         };
 
-        drawWedge(wedge, 'green', 'white', 1);
+        drawWedge(wedge, 'green', 'black', 1);
 
         if (elapsed < 60000) {
           animationFrameId = requestAnimationFrame(animate);
