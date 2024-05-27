@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {StyleSheet} from 'react-native';
 import Canvas from 'react-native-canvas';
 
-const Timer = () => {
+const Clock = () => {
   const canvasRef = useRef<Canvas>(null);
   const [startTime, setStartTime] = useState<number | null>(null);
 
@@ -72,7 +72,7 @@ const Timer = () => {
         ctx.stroke();
 
         ctx.fillStyle = mainColor;
-        ctx.font = '14px JetBrainsMono-Light';
+        ctx.font = '14px JetBrainsMono-Bold';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
 
@@ -134,4 +134,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Timer;
+export default Clock;
