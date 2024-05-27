@@ -58,7 +58,7 @@ const Timer = () => {
         // 색상 타이머 영역
         ctx.beginPath();
         ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, radius, startAngle, endAngle, true);
+        ctx.arc(cx, cy, radius, startAngle, endAngle, false); // false로 반시계 방향
         ctx.closePath();
         ctx.fillStyle = fill;
         ctx.fill();
@@ -108,7 +108,7 @@ const Timer = () => {
           cy: 150,
           radius: 100,
           startAngle: -Math.PI / 2,
-          endAngle: -Math.PI / 2 + angle,
+          endAngle: -Math.PI / 2 - angle, // 반시계 방향으로 변경
         };
 
         drawWedge(wedge, 'green', 'black', 1);
