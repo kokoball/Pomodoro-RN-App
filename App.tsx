@@ -19,6 +19,7 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import TopMenuBar from '@components/TopMenuBar';
+import Timer from '@components/Timer';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -28,25 +29,40 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={[styles.safeArea, backgroundStyle]}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+        style={[styles.scrollView, backgroundStyle]}>
         <TopMenuBar />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}
-        />
+          }}>
+          <Timer />
+        </View>
+
+        <View>
+          <Text>123</Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  backgroundStyle: {
+    height: '100%',
+  },
+  safeArea: {
+    flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+  },
+});
 
 export default App;

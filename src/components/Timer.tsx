@@ -71,6 +71,32 @@ const Timer = () => {
         ctx.arc(cx, cy, radius / 3, 0, 2 * Math.PI);
         ctx.fillStyle = 'white';
         ctx.fill();
+
+        // 모든 시각 텍스트 추가
+        ctx.fillStyle = 'black';
+        ctx.font = '16px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        for (let i = 1; i <= 12; i++) {
+          const angle = (i - 3) * (Math.PI / 6); // 12시는 -90도에서 시작
+          const x = cx + Math.cos(angle) * (radius + 20);
+          const y = cy + Math.sin(angle) * (radius + 20);
+          ctx.fillText(i.toString(), x, y);
+        }
+
+        // 시계 사이에 - 기호 추가
+        for (let i = 0; i < 12; i++) {
+          const angle = (i * Math.PI) / 6; // 12개 위치로 분할
+          const x = cx + Math.cos(angle) * (radius + 35);
+          const y = cy + Math.sin(angle) * (radius + 35);
+
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate(angle);
+          ctx.fillText('-', 0, 0);
+          ctx.restore();
+        }
       };
 
       const animate = () => {
