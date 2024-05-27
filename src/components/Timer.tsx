@@ -27,8 +27,8 @@ const Timer = () => {
     let animationFrameId: number;
 
     if (canvas) {
-      canvas.width = 300;
-      canvas.height = 300;
+      canvas.width = 350;
+      canvas.height = 500;
       const ctx = canvas.getContext('2d');
 
       const drawWedge = (
@@ -39,63 +39,61 @@ const Timer = () => {
           startAngle: number;
           endAngle: number;
         },
-        fill: string,
-        stroke: string,
-        strokewidth: number,
+        mainColor: string,
+        subColor: string,
       ) => {
         const {cx, cy, radius, startAngle, endAngle} = w;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // 바깥 흰 영역
         ctx.beginPath();
-        ctx.arc(cx, cy, radius + 45, 0, 2 * Math.PI);
+        ctx.arc(cx, cy, radius + 55, 0, 2 * Math.PI);
         ctx.fillStyle = 'white';
         ctx.fill();
         ctx.strokeStyle = 'black';
-        ctx.lineWidth = 1; // 가장 바깥 테두리
+        ctx.lineWidth = 1;
         ctx.stroke();
 
         // 색상 타이머 영역
         ctx.beginPath();
         ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, radius, startAngle, endAngle, false); // false로 반시계 방향
+        ctx.arc(cx, cy, radius, startAngle, endAngle, false);
         ctx.closePath();
-        ctx.fillStyle = fill;
+        ctx.fillStyle = mainColor;
         ctx.fill();
-        ctx.strokeStyle = stroke;
-        ctx.lineWidth = strokewidth;
-        ctx.stroke();
 
         // 안쪽 영역
         ctx.beginPath();
-        ctx.arc(cx, cy, radius / 3, 0, 2 * Math.PI);
-        ctx.fillStyle = 'white';
+        ctx.arc(cx, cy, radius / 3.6, 0, 2 * Math.PI);
+        ctx.fillStyle = subColor;
         ctx.fill();
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.stroke();
 
-        // 모든 시각 텍스트 추가
-        ctx.fillStyle = 'black';
-        ctx.font = '16px Arial';
+        ctx.fillStyle = mainColor;
+        ctx.font = '14px JetBrainsMono-Light';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
 
-        for (let i = 1; i <= 12; i++) {
-          const angle = (i - 3) * (Math.PI / 6); // 12시는 -90도에서 시작
-          const x = cx + Math.cos(angle) * (radius + 20);
-          const y = cy + Math.sin(angle) * (radius + 20);
-          ctx.fillText(i.toString(), x, y);
-        }
-
-        // 시계 사이에 - 기호 추가
         for (let i = 0; i < 12; i++) {
-          const angle = (i * Math.PI) / 6; // 12개 위치로 분할
-          const x = cx + Math.cos(angle) * (radius + 35);
-          const y = cy + Math.sin(angle) * (radius + 35);
+          const numAngle = (i - 3) * (Math.PI / 6);
+          const nx = cx + Math.cos(numAngle) * (radius + 25);
+          const ny = cy + Math.sin(numAngle) * (radius + 25);
+          ctx.fillText((i * 5).toString(), nx, ny);
 
-          ctx.save();
-          ctx.translate(x, y);
-          ctx.rotate(angle);
-          ctx.fillText('-', 0, 0);
-          ctx.restore();
+          const lineAngle = (i * Math.PI) / 6;
+          const x1 = cx + Math.cos(lineAngle) * (radius + 38);
+          const y1 = cy + Math.sin(lineAngle) * (radius + 38);
+          const x2 = cx + Math.cos(lineAngle) * (radius + 50);
+          const y2 = cy + Math.sin(lineAngle) * (radius + 50);
+
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.strokeStyle = mainColor;
+          ctx.lineWidth = 2;
+          ctx.stroke();
         }
       };
 
@@ -104,14 +102,14 @@ const Timer = () => {
         const elapsed = startTime ? currentTime - startTime : 0;
         const angle = (elapsed / 60000) * 2 * Math.PI;
         const wedge = {
-          cx: 150,
-          cy: 150,
+          cx: 180,
+          cy: 200,
           radius: 100,
           startAngle: -Math.PI / 2,
-          endAngle: -Math.PI / 2 - angle, // 반시계 방향으로 변경
+          endAngle: -Math.PI / 2 - angle,
         };
 
-        drawWedge(wedge, 'green', 'black', 1);
+        drawWedge(wedge, '#07694F', '#F5CC9F');
 
         if (elapsed < 60000) {
           animationFrameId = requestAnimationFrame(animate);
@@ -132,7 +130,7 @@ const Timer = () => {
 const styles = StyleSheet.create({
   canvas: {
     width: '100%',
-    height: 300,
+    height: 500,
   },
 });
 
