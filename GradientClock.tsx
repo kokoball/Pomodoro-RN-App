@@ -11,8 +11,9 @@ import {
 
 const {width, height} = Dimensions.get('window');
 
-export const App = () => {
+export const GradientClock = () => {
   const rotation = useSharedValue(0);
+  console.log(rotation, 123123);
 
   const centerX = width / 2;
   const centerY = height / 2;
@@ -21,15 +22,17 @@ export const App = () => {
   useEffect(() => {
     rotation.value = withRepeat(
       withTiming(2, {
-        duration: 3600,
+        duration: 4000,
         easing: Easing.linear,
       }),
       -1,
       false,
     );
+    console.log(rotation, 123123);
   }, [rotation]);
 
   const animatedRotation = useDerivedValue(() => {
+    // console.log([{rotate: Math.PI * rotation.value}], 90);
     return [{rotate: Math.PI * rotation.value}];
   }, [rotation]);
 
@@ -40,7 +43,7 @@ export const App = () => {
           <SweepGradient
             origin={centerVec}
             c={centerVec}
-            colors={['red', 'pink']}
+            colors={['white', 'grey', '#222222', 'black']}
             start={0}
             end={360}
             transform={animatedRotation}
@@ -86,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default GradientClock;
