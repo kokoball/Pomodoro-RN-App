@@ -19,7 +19,7 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import TopMenuBar from '@components/TopMenuBar';
-import Timer from '@components/Timer';
+import Clock from '@components/Clock';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -42,7 +42,7 @@ function App(): React.JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Timer />
+          <Clock />
         </View>
 
         <View>
