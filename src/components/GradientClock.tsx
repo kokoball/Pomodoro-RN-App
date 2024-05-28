@@ -13,7 +13,7 @@ const {width, height} = Dimensions.get('window');
 
 export const GradientClock = () => {
   const rotation = useSharedValue(0);
-  console.log(rotation, 123123);
+  console.log(rotation, 321321321321);
 
   const centerX = width / 2;
   const centerY = height / 2;
@@ -88,5 +88,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
-export default GradientClock;
