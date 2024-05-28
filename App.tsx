@@ -1,88 +1,65 @@
-import React, {useEffect} from 'react';
-import {Dimensions, StyleSheet, View, Text} from 'react-native';
-import {Canvas, Rect, SweepGradient, vec} from '@shopify/react-native-skia';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ */
+
+import React from 'react';
+import type {PropsWithChildren} from 'react';
 import {
-  Easing,
-  useDerivedValue,
-  useSharedValue,
-  withRepeat,
-  withTiming,
-} from 'react-native-reanimated';
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+} from 'react-native';
 
-const {width, height} = Dimensions.get('window');
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import TopMenuBar from '@components/TopMenuBar';
 
-export const App = () => {
-  const rotation = useSharedValue(0);
+function App(): React.JSX.Element {
+  const isDarkMode = useColorScheme() === 'dark';
 
-  const centerX = width / 2;
-  const centerY = height / 2;
-  const centerVec = vec(centerX, centerY);
-
-  useEffect(() => {
-    rotation.value = withRepeat(
-      withTiming(2, {
-        duration: 3600,
-        easing: Easing.linear,
-      }),
-      -1,
-      false,
-    );
-  }, [rotation]);
-
-  const animatedRotation = useDerivedValue(() => {
-    return [{rotate: Math.PI * rotation.value}];
-  }, [rotation]);
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
 
   return (
-    <View style={styles.container}>
-      <Canvas style={styles.canvas}>
-        <Rect x={0} y={0} width={width} height={height}>
-          <SweepGradient
-            origin={centerVec}
-            c={centerVec}
-            colors={['red', 'pink']}
-            start={0}
-            end={360}
-            transform={animatedRotation}
-          />
-        </Rect>
-      </Canvas>
-      <Text style={styles.dayText}>DAY</Text>
-      <Text style={styles.nightText}>NIGHT</Text>
-    </View>
+    <SafeAreaView style={[styles.safeArea, backgroundStyle]}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
+      />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={[styles.scrollView, backgroundStyle]}>
+        <TopMenuBar />
+        <View
+          style={{
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          }}
+        />
+
+        <View>
+          <Text>123</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  container: {
+  backgroundStyle: {
+    height: '100%',
+  },
+  safeArea: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-  canvas: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-  dayText: {
-    position: 'absolute',
-    top: '20%',
-    fontWeight: '100',
-    letterSpacing: 8,
-    fontSize: 90,
-    color: 'black',
-    textAlign: 'center',
-  },
-  nightText: {
-    position: 'absolute',
-    bottom: '20%',
-    fontWeight: '100',
-    letterSpacing: 8,
-    fontSize: 90,
-    color: 'white',
-    textAlign: 'center',
+  scrollView: {
+    flex: 1,
   },
 });
 
