@@ -13,7 +13,12 @@
     "baseUrl": "./src",
     "paths": {
       "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@hooks/*": ["hooks/*"],
+      "@server/*": ["server/*"],
+      "@types/*": ["types/*"],
+      "@utils/*": ["utils/*"],
     }
   },
   "exclude": [
