@@ -1,3 +1,7 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">PomodoroApp</string>
+=======
+    <string name="app_name">NewPomodoroApp</string>
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
 </resources>

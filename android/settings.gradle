@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 rootProject.name = 'PomodoroApp'
+=======
+rootProject.name = 'NewPomodoroApp'
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')

@@ -1,6 +1,10 @@
 module.exports = {
   presets: [
+<<<<<<< HEAD
     'module:@react-native/babel-preset',
+=======
+    'module:metro-react-native-babel-preset',
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
     '@babel/preset-react',
     '@babel/preset-typescript',
   ],
@@ -27,5 +31,9 @@ module.exports = {
         },
       },
     ],
+<<<<<<< HEAD
+=======
+    'react-native-reanimated/plugin',
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
   ],
 };

@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "PomodoroApp",
+=======
+  "name": "NewPomodoroApp",
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,17 +14,26 @@
     "test": "jest"
   },
   "dependencies": {
+<<<<<<< HEAD
     "babel-plugin-module-resolver": "^5.0.2",
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-canvas": "^0.1.39",
     "react-native-webview": "^13.10.2"
+=======
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@shopify/react-native-skia": "0.1.196",
+    "react": "18.2.0",
+    "react-native": "0.72.6",
+    "react-native-reanimated": "~3.3.0"
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@babel/preset-env": "^7.20.0",
     "@babel/preset-react": "^7.24.6",
     "@babel/runtime": "^7.20.0",
+<<<<<<< HEAD
     "@react-native/babel-preset": "0.74.83",
     "@react-native/eslint-config": "0.74.83",
     "@react-native/metro-config": "0.74.83",
@@ -37,6 +50,24 @@
   },
   "engines": {
     "node": ">=18"
+=======
+    "@react-native/eslint-config": "^0.72.2",
+    "@react-native/metro-config": "^0.72.11",
+    "@tsconfig/react-native": "^3.0.0",
+    "@types/react": "^18.0.24",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^29.2.1",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "eslint": "^8.19.0",
+    "jest": "^29.2.1",
+    "metro-react-native-babel-preset": "0.76.8",
+    "prettier": "^2.4.1",
+    "react-test-renderer": "18.2.0",
+    "typescript": "4.8.4"
+  },
+  "engines": {
+    "node": ">=16"
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
   },
   "packageManager": "yarn@3.6.4"
 }

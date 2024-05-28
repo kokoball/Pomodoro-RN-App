@@ -21,5 +21,11 @@
     "babel.config.js",
     "metro.config.js",
     "jest.config.js"
+<<<<<<< HEAD
   ]
 }
+=======
+  ],
+  "extends": "@tsconfig/react-native/tsconfig.json"
+}
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc

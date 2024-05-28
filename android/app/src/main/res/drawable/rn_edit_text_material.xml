@@ -17,8 +17,12 @@
        android:insetLeft="@dimen/abc_edit_text_inset_horizontal_material"
        android:insetRight="@dimen/abc_edit_text_inset_horizontal_material"
        android:insetTop="@dimen/abc_edit_text_inset_top_material"
+<<<<<<< HEAD
        android:insetBottom="@dimen/abc_edit_text_inset_bottom_material"
        >
+=======
+       android:insetBottom="@dimen/abc_edit_text_inset_bottom_material">
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
 
     <selector>
         <!--

@@ -1,5 +1,8 @@
 apply plugin: "com.android.application"
+<<<<<<< HEAD
 apply plugin: "org.jetbrains.kotlin.android"
+=======
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
 apply plugin: "com.facebook.react"
 
 /**
@@ -71,12 +74,21 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
     ndkVersion rootProject.ext.ndkVersion
+<<<<<<< HEAD
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.pomodoroapp"
     defaultConfig {
         applicationId "com.pomodoroapp"
+=======
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    namespace "com.newpomodoroapp"
+    defaultConfig {
+        applicationId "com.newpomodoroapp"
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -108,6 +120,15 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 
+<<<<<<< HEAD
+=======
+    debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
+    debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
+        exclude group:'com.squareup.okhttp3', module:'okhttp'
+    }
+
+    debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}")
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

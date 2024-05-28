@@ -1,4 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "PomodoroApp",
   "displayName": "PomodoroApp"
+=======
+  "name": "NewPomodoroApp",
+  "displayName": "NewPomodoroApp"
+>>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
 }
