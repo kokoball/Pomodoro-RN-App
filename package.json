@@ -22,11 +22,23 @@
     "react-native-webview": "^13.10.2"
 =======
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/stack": "^6.3.16",
+    "@reduxjs/toolkit": "^2.2.5",
     "@shopify/react-native-skia": "0.1.196",
     "react": "18.2.0",
     "react-native": "0.72.6",
+<<<<<<< HEAD
     "react-native-reanimated": "~3.3.0"
 >>>>>>> d2661918b230cf21da1d34d2c0ffca424acd60fc
+=======
+    "react-native-gesture-handler": "~2.12.0",
+    "react-native-reanimated": "~3.3.0",
+    "react-native-safe-area-context": "4.6.3",
+    "react-native-screens": "~3.22.0",
+    "react-redux": "^9.1.2",
+    "d3": "^7.8.4"
+>>>>>>> 393ee563b79a4759333fbf7fd088c1d88014ea35
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -63,7 +75,8 @@
     "metro-react-native-babel-preset": "0.76.8",
     "prettier": "^2.4.1",
     "react-test-renderer": "18.2.0",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "@types/d3": "^7.4.0"
   },
   "engines": {
     "node": ">=16"

@@ -8,7 +8,6 @@ interface TopMenuBarProps {
 
 const TopMenuBar: React.FC<TopMenuBarProps> = ({}) => {
   const currentTime = useCurrentTime();
-  console.log(currentTime, 90);
 
   return (
     <View style={styles.wrapper}>
