@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {
-  Alert,
   Dimensions,
   SafeAreaView,
   View,
@@ -9,7 +8,6 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-
 import {
   Skia,
   Canvas,
@@ -25,6 +23,8 @@ import {
   useFont,
   SkiaMutableValue,
 } from '@shopify/react-native-skia';
+import {useNavigation} from '@react-navigation/native';
+import {AnimationScreenNames} from '@constants/NavigationHelpers';
 
 import {line, curveBasis} from 'd3';
 
@@ -45,10 +45,15 @@ export const WaveMeter = () => {
   const clock = useClockValue();
   const font = useFont(require('@assets/fonts/bruno.ttf'), 20);
 
+  const nav = useNavigation<any>();
+
+  const goToScreen = (name: string) => {
+    nav.push(name, {value: parseInt(nowTime, 10)});
+  };
+
   const touchHandler = useTouchHandler({
     onActive: ({y}) => {
       if (y > verticalShiftConst) {
-        console.log(y, 9090);
         verticalShift.current = Math.min(height, y);
         amplitude.current = Math.max(
           0,
@@ -125,15 +130,6 @@ export const WaveMeter = () => {
     return Math.round(adjustedShift * 60);
   };
 
-  const alertValue = () => {
-    const adjustedShift =
-      (verticalShiftConst - verticalShift.current) /
-        (height - verticalShiftConst) +
-      1;
-
-    Alert.alert('VALUE', `Your value is: ${Math.round(adjustedShift * 60)}`);
-  };
-
   const updateGraphValues = (newTime: number) => {
     const adjustedShift = 380 - newTime * 4.85;
     verticalShift.current = adjustedShift;
@@ -201,7 +197,9 @@ export const WaveMeter = () => {
           </TouchableOpacity>
         )}
       </View>
-      <TouchableOpacity style={styles.buttonContainer} onPress={alertValue}>
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => goToScreen(AnimationScreenNames.GRADIENT_CLOCK)}>
         <RNText style={styles.buttonText}>시작하기</RNText>
       </TouchableOpacity>
     </SafeAreaView>

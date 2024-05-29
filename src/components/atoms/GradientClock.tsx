@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Dimensions, StyleSheet, View, Text} from 'react-native';
 import {Canvas, Rect, SweepGradient, vec} from '@shopify/react-native-skia';
 import {
@@ -8,11 +8,16 @@ import {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
+import {useRoute} from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window');
 
 export const GradientClock = () => {
+  const [second, setSecond] = useState(0);
   const rotation = useSharedValue(0);
+  const route = useRoute();
+  const {value} = route.params as {value: number};
+  const [currentValue, setCurrentValue] = useState(value);
 
   const centerX = width / 2;
   const centerY = height / 2;
@@ -21,16 +26,28 @@ export const GradientClock = () => {
   useEffect(() => {
     rotation.value = withRepeat(
       withTiming(2, {
-        duration: 60000,
+        duration: 245000,
         easing: Easing.linear,
       }),
       -1,
       false,
     );
+
+    const interval = setInterval(() => {
+      setSecond(prev => {
+        if (prev === 59) {
+          setCurrentValue(prevValue => prevValue - 1);
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, [rotation]);
 
   const animatedRotation = useDerivedValue(() => {
-    return [{rotate: Math.PI * rotation.value}];
+    return [{rotate: Math.PI * 1.5 + Math.PI * 4 * rotation.value}];
   }, [rotation]);
 
   return (
@@ -47,8 +64,8 @@ export const GradientClock = () => {
           />
         </Rect>
       </Canvas>
-      <Text style={styles.dayText}>DAY</Text>
-      <Text style={styles.nightText}>NIGHT</Text>
+      <Text style={styles.dayText}>{currentValue}</Text>
+      <Text style={styles.nightText}>{second}</Text>
     </View>
   );
 };
@@ -69,7 +86,7 @@ const styles = StyleSheet.create({
   dayText: {
     position: 'absolute',
     top: '20%',
-    fontWeight: '100',
+    fontWeight: '400',
     letterSpacing: 8,
     fontSize: 90,
     color: 'black',
@@ -78,7 +95,7 @@ const styles = StyleSheet.create({
   nightText: {
     position: 'absolute',
     bottom: '20%',
-    fontWeight: '100',
+    fontWeight: '400',
     letterSpacing: 8,
     fontSize: 90,
     color: 'white',
