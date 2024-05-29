@@ -29,7 +29,6 @@ export const Home = () => {
   const nav = useNavigation<any>();
 
   const goToScreen = (name: string) => {
-    console.log(name, 123);
     nav.push(name);
   };
 

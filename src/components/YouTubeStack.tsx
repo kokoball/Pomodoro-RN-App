@@ -7,7 +7,6 @@ import {YoutubeHome} from './YoutubeHome';
 
 export default function YouTubeStack() {
   const Stack = createStackNavigator();
-  console.log('ddd', allScreens, 909900990);
 
   const getScreenConfig = (screen: string) => {
     switch (screen) {

@@ -13,7 +13,6 @@ const {width, height} = Dimensions.get('window');
 
 export const GradientClock = () => {
   const rotation = useSharedValue(0);
-  console.log(rotation, 321321321321);
 
   const centerX = width / 2;
   const centerY = height / 2;
@@ -28,11 +27,9 @@ export const GradientClock = () => {
       -1,
       false,
     );
-    console.log(rotation, 123123);
   }, [rotation]);
 
   const animatedRotation = useDerivedValue(() => {
-    // console.log([{rotate: Math.PI * rotation.value}], 90);
     return [{rotate: Math.PI * rotation.value}];
   }, [rotation]);
 

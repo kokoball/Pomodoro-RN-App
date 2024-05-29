@@ -1,4 +1,4 @@
-import {GradientClock} from '@components/GradientClock';
+import {GradientClock} from '@components/atoms';
 import {Screen} from 'types';
 
 export const AnimationScreenNames = {
