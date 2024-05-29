@@ -29,6 +29,7 @@ module.exports = {
           '@server': './src/server',
           '@type': './src/type',
           '@utils': './src/utils',
+          '@store': './src/store',
         },
       },
     ],

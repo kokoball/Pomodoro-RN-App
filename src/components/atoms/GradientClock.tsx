@@ -21,7 +21,7 @@ export const GradientClock = () => {
   useEffect(() => {
     rotation.value = withRepeat(
       withTiming(2, {
-        duration: 4000,
+        duration: 60000,
         easing: Easing.linear,
       }),
       -1,
@@ -40,7 +40,7 @@ export const GradientClock = () => {
           <SweepGradient
             origin={centerVec}
             c={centerVec}
-            colors={['white', 'grey', '#222222', 'black']}
+            colors={['white', 'grey']}
             start={0}
             end={360}
             transform={animatedRotation}
