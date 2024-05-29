@@ -1,4 +1,4 @@
-import {GradientClock} from '@components/atoms';
+import {GradientClock, WaveMeter} from '@components/atoms';
 import {Screen} from 'types';
 
 export const AnimationScreenNames = {
@@ -22,5 +22,9 @@ export const allScreens: Screen[] = [
   {
     name: AnimationScreenNames.GRADIENT_CLOCK,
     component: GradientClock,
+  },
+  {
+    name: AnimationScreenNames.WAVE_METER,
+    component: WaveMeter,
   },
 ];
