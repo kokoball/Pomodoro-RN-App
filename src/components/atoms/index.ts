@@ -1,2 +1,2 @@
-export * from './GradientClock';
+export * from './PomodoroClock';
 export * from './WaveMeter';

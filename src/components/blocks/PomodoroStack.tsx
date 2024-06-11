@@ -3,25 +3,19 @@ import 'react-native-gesture-handler';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {AnimationScreenNames, allScreens} from '@constants/NavigationHelpers';
-import {YoutubeHome} from './YoutubeHome';
+import {PomodoroHome} from '@components/atoms/PomodoroHome';
 
-export default function YouTubeStack() {
+export default function PomodoroStack() {
   const Stack = createStackNavigator();
 
   const getScreenConfig = (screen: string) => {
     switch (screen) {
       case AnimationScreenNames.WAVE_METER:
-      case AnimationScreenNames.BENDING_CIRCLE:
         return {
           headerTintColor: '#fff',
           headerStyle: {
             backgroundColor: 'black',
           },
-        };
-      case AnimationScreenNames.GRADIENT_CLOCK:
-      case AnimationScreenNames.FOCUS_ANIMATION:
-        return {
-          headerShown: false,
         };
       default:
         return undefined;
@@ -30,7 +24,7 @@ export default function YouTubeStack() {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="YouTube Demos" component={YoutubeHome} />
+      <Stack.Screen name=" " component={PomodoroHome} />
       {allScreens.map((screen, index) => (
         <Stack.Screen
           key={index}

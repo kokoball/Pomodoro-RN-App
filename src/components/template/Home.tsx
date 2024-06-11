@@ -4,15 +4,17 @@ import {
   Text,
   Pressable,
   StyleSheet,
-  Platform,
   SafeAreaView,
+  FlatList,
+  Platform,
 } from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
-
 import {useNavigation} from '@react-navigation/native';
-import {AnimationScreenNames} from '@constants/NavigationHelpers';
 
-export const YoutubeHome = () => {
+export const AnimationScreenNames = {
+  SCREEN_STACK: 'Pomodoro Timer ⏰',
+};
+
+export const Home = () => {
   const nav = useNavigation<any>();
 
   const goToScreen = (name: string) => {
@@ -23,11 +25,12 @@ export const YoutubeHome = () => {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={Object.values(AnimationScreenNames)}
+        style={styles.flatListContainer}
         renderItem={({item}) => {
           return (
             <Pressable onPress={() => goToScreen(item)} style={styles.button}>
               <View style={styles.exampleCell}>
-                <Text>{item}</Text>
+                <Text style={styles.cellText}>{item}</Text>
               </View>
             </Pressable>
           );
@@ -42,9 +45,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  flatListContainer: {
+    marginTop: 70,
+  },
   button: {
     height: 100,
     backgroundColor: 'white',
+  },
+  cellText: {
+    color: 'black',
   },
   exampleCell: {
     borderRadius: 8,
@@ -52,8 +61,8 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     backgroundColor: 'white',
     flex: 1,
-    shadowColor: Platform.OS === 'android' ? 'black' : 'lightgrey',
-    shadowOffset: {width: 2, height: 2},
+    shadowColor: Platform.OS === 'ios' ? 'darkgrey' : 'black',
+    shadowOffset: {width: 0, height: 0},
     shadowOpacity: 0.9,
     shadowRadius: 5,
     elevation: 5,

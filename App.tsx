@@ -5,8 +5,8 @@ import {Platform} from 'react-native';
 import {Provider} from 'react-redux';
 import store from '@store/index';
 
-import {Home} from '@components/Home';
-import YouTubeStack from '@components/YouTubeStack';
+import {Home} from '@components/template/Home';
+import PomodoroStack from '@components/blocks/PomodoroStack';
 
 function App(): React.JSX.Element {
   const Stack = createStackNavigator();
@@ -20,7 +20,7 @@ function App(): React.JSX.Element {
             presentation: Platform.OS === 'android' ? 'modal' : undefined,
           }}>
           <Stack.Screen name="Menu" component={Home} />
-          <Stack.Screen name="YouTube Demos 🎥" component={YouTubeStack} />
+          <Stack.Screen name="Pomodoro Timer ⏰" component={PomodoroStack} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

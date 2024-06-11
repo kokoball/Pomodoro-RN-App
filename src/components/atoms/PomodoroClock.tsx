@@ -12,7 +12,7 @@ import {useRoute} from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window');
 
-export const GradientClock = () => {
+export const PomodoroClock = () => {
   const [second, setSecond] = useState(0);
   const rotation = useSharedValue(0);
   const route = useRoute();

@@ -4,28 +4,17 @@ import {
   Text,
   Pressable,
   StyleSheet,
-  SafeAreaView,
-  FlatList,
   Platform,
+  SafeAreaView,
 } from 'react-native';
-
-import {Screen} from 'types';
-
+import {FlatList} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
-import YouTubeStack from './YouTubeStack';
 
 export const AnimationScreenNames = {
-  YOUTUBE_STACK: 'YouTube Demos 🎥',
+  WAVE_METER: 'Time Setting',
 };
 
-export const allScreens: Screen[] = [
-  {
-    name: 'YouTube Demos 🎥',
-    component: YouTubeStack,
-  },
-];
-
-export const Home = () => {
+export const PomodoroHome = () => {
   const nav = useNavigation<any>();
 
   const goToScreen = (name: string) => {
@@ -36,12 +25,11 @@ export const Home = () => {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={Object.values(AnimationScreenNames)}
-        style={styles.flatListContainer}
         renderItem={({item}) => {
           return (
             <Pressable onPress={() => goToScreen(item)} style={styles.button}>
               <View style={styles.exampleCell}>
-                <Text style={styles.cellText}>{item}</Text>
+                <Text>{item}</Text>
               </View>
             </Pressable>
           );
@@ -56,15 +44,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-  flatListContainer: {
-    marginTop: 70,
-  },
   button: {
     height: 100,
     backgroundColor: 'white',
-  },
-  cellText: {
-    color: 'black',
   },
   exampleCell: {
     borderRadius: 8,
@@ -72,8 +54,8 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     backgroundColor: 'white',
     flex: 1,
-    shadowColor: Platform.OS === 'ios' ? 'darkgrey' : 'black',
-    shadowOffset: {width: 0, height: 0},
+    shadowColor: Platform.OS === 'android' ? 'black' : 'lightgrey',
+    shadowOffset: {width: 2, height: 2},
     shadowOpacity: 0.9,
     shadowRadius: 5,
     elevation: 5,

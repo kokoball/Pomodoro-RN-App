@@ -199,7 +199,7 @@ export const WaveMeter = () => {
       </View>
       <TouchableOpacity
         style={styles.buttonContainer}
-        onPress={() => goToScreen(AnimationScreenNames.GRADIENT_CLOCK)}>
+        onPress={() => goToScreen(AnimationScreenNames.POMODORO_TIMER)}>
         <RNText style={styles.buttonText}>시작하기</RNText>
       </TouchableOpacity>
     </SafeAreaView>
