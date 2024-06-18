@@ -2,7 +2,7 @@
 
 ## 📖 프로젝트 설명
 
-React Native로 만드는 뽀모도로 타이머
+React Native와 Skia로 만드는 뽀모도로 타이머
 
 ## 💿 기술 스택
 - react-native: 0.72.6
@@ -41,19 +41,24 @@ npm run ios
 # OR using Yarn
 yarn ios
 ```
-
-
+## 간단 시연
+https://github.com/kokoball/Pomodoro-RN-App/assets/48192081/e8777397-225a-451b-89c3-bb5038bc0fee
 
 
 ## 📦 폴더구조(app router)
 
 ```
 📦 src
-├── 📄 Layout.tsx
-├── 📄 page.tsx
+├── 📂 assets
 ├── 📂 components
-│   ├── 📄 Navbar.tsx
-├── 📂 result
-│   ├── 📄 page.tsx
+│   ├── 📂 atmos
+│   ├── 📂 blocks
+│   ├── 📂 template
+├── 📂 constants
+├── 📂 hooks
+├── 📂 server
+├── 📂 store
+├── 📂 types
+├── 📂 utils
 ```
 
